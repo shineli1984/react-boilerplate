@@ -8,8 +8,8 @@ const urlsToCache = [
 
 // Set the callback for the install step
 self.addEventListener('install', () => {
-    // Perform install steps
-    // event.waitUntil(
+  // Perform install steps
+  // event.waitUntil(
   caches.open(CACHE_NAME)
     .then((cache) => {
       return cache.addAll(urlsToCache);
@@ -57,5 +57,5 @@ self.addEventListener('fetch', (event) => {
           }
         );
       })
-    );
+  );
 });

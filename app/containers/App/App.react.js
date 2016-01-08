@@ -7,32 +7,18 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Img from '../../components/Img/Img.react';
 import Logo from '../../assets/logo.png';
 
 import styles from './App.css';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className={styles.wrapper}>
-        <Img className={styles.logo} src={Logo} alt="Max Stoiber - Logo"/>
-        { this.props.children }
-      </div>
-    );
-  }
-}
+const App  = ({ children }) =>
+  (
+    <div className={styles.wrapper}>
+      <Img className={styles.logo} src={Logo} alt="Max Stoiber - Logo"/>
+      { children }
+    </div>
+  );
 
-// REDUX STUFF
-
-// Which props do we want to inject, given the global state?
-function select(state) {
-  return {
-    data: state
-  };
-}
-
-// Wrap the component to inject dispatch and state into it
-export default connect(select)(App);
+export default App;

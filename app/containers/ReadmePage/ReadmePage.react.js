@@ -10,8 +10,8 @@ import Button from '../../components/Button/Button.react';
 
 import styles from './ReadmePage.css';
 
-function ReadmePage() {
-  return (
+const ReadmePage = () =>
+  (
     <div>
       <h2>Further Setup</h2>
       <p>
@@ -30,7 +30,6 @@ function ReadmePage() {
       <Button route="/">Home</Button>
     </div>
   );
-}
 
 
 export default ReadmePage;

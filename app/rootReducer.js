@@ -4,10 +4,10 @@
  */
 
 import HomePageReducer from './containers/HomePage/HomePage.reducer';
+import { combineReducers } from './rx-redux';
 
-// Replace line below once you have several reducers with
-// import { combineReducers } from 'redux';
-// const rootReducer = combineReducers({ HomePage.reducer, yourReducer })
-const rootReducer = HomePageReducer;
+const rootReducer = combineReducers({
+  data: HomePageReducer
+});
 
 export default rootReducer;
