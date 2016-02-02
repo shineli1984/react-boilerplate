@@ -11,14 +11,16 @@
 // the manifest.json file and the .htaccess file
 //import 'file?name=[name].[ext]!./serviceworker.js';
 //import 'file?name=[name].[ext]!./manifest.json';
-import 'file?name=[name].[ext]!./.htaccess';
-
-//// Check for ServiceWorker support before trying to install it
+//import 'file?name=[name].[ext]!./.htaccess';
+//
+//// // Check for ServiceWorker support before trying to install it
 //if ('serviceWorker' in navigator) {
 //  navigator.serviceWorker.register('/serviceworker.js').then(() => {
-//    // Registration was successful
+//  // Registration was successful
+//
 //  }).catch(() => {
-//    // Registration failed
+//  // Registration failed
+//
 //  });
 //} else {
 //  // No ServiceWorker Support
@@ -28,7 +30,6 @@ import 'file?name=[name].[ext]!./.htaccess';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router';
-import { dispatcher } from './rx-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import createHistory from 'history/lib/createBrowserHistory';
 

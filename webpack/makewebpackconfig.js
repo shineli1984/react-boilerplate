@@ -15,7 +15,6 @@ module.exports = function(options) {
     entry = [
       path.join(__dirname, '..', 'app/app.js') // Start with js/app.js...
     ];
-    cssLoaders = ExtractTextPlugin.extract('style-loader', 'css-loader?modules!postcss-loader');
     // Plugins
     plugins = [// Plugins for Webpack
       new webpack.optimize.UglifyJsPlugin({ // Optimize the JavaScript...
@@ -55,9 +54,9 @@ module.exports = function(options) {
       "webpack/hot/only-dev-server", // See above
       path.join(__dirname, '..', 'app/app.js') // Start with js/app.js...
     ];
-    cssLoaders = 'style-loader!css-loader?modules!postcss-loader';
     // Only plugin is the hot module replacement plugin
     plugins = [
+      new ExtractTextPlugin("css/main.css"),
       new webpack.HotModuleReplacementPlugin(), // Make hot loading work
       new HtmlWebpackPlugin({
         template: 'app/index.html', // Move the index.html file
@@ -95,7 +94,7 @@ module.exports = function(options) {
           query: query,
         }, {
           test:   /\.css$/, // Transform all .css files required somewhere within an entry point...
-          loader: cssLoaders // ...with PostCSS
+          loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules!postcss-loader') // ...with PostCSS
         }, {
           test: /\.jpe?g$|\.gif$|\.png$/i,
           loader: "url-loader?limit=10000"

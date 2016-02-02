@@ -6,8 +6,8 @@ import { dispatcher } from './rx-redux';
  */
 const connect = select => (component, store) => {
   return React.createClass({
-    componentWillMount: function () {
 
+    componentWillMount() {
       this.disposable = store.subscribe(
         state => this.setState(select(state)),
         console.error.bind(console)
@@ -16,15 +16,15 @@ const connect = select => (component, store) => {
       dispatcher.next({}); // initial dispatch before component renders
     },
 
-    render: function () {
+    componentWillUnmount() {
+      this.disposable.unsubscribe();
+    },
+
+    render() {
       return React.createElement(
         component,
         Object.assign({}, this.state, this.props)
       );
-    },
-
-    componentWillUnmount: function () {
-      this.disposable.unsubscribe();
     }
   });
 };

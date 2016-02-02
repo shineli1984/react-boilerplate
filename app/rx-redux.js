@@ -1,5 +1,4 @@
-var Rx = require('rxjs');
-
+import Rx from 'rxjs';
 import R from 'ramda';
 
 const dispatcher = new Rx.ReplaySubject(1);
@@ -23,4 +22,3 @@ export {
   combineReducers,
   createStore
 };
-
