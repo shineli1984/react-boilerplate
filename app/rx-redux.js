@@ -1,10 +1,11 @@
 import Rx from 'rxjs';
 import R from 'ramda';
 
-const dispatcher = new Rx.ReplaySubject(1);
+const dispatcher = new Rx.Subject();
 
 const combineReducers = reducers => (stateSoFar, action) => {
   const keys = R.keys(reducers);
+
   const values = keys.map(prop =>
     reducers[prop](stateSoFar[prop], action)
   );
@@ -15,7 +16,7 @@ const combineReducers = reducers => (stateSoFar, action) => {
   );
 };
 
-const createStore = reducer => dispatcher.scan(reducer, {});
+const createStore = reducer => dispatcher.scan(reducer, {}).publish();
 
 export {
   dispatcher,

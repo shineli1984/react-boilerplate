@@ -54,7 +54,7 @@ module.exports = function(options) {
       "webpack/hot/only-dev-server", // See above
       path.join(__dirname, '..', 'app/app.js') // Start with js/app.js...
     ];
-    // Only plugin is the hot module replacement plugin
+
     plugins = [
       new ExtractTextPlugin("css/main.css"),
       new webpack.HotModuleReplacementPlugin(), // Make hot loading work
@@ -124,4 +124,4 @@ module.exports = function(options) {
     stats: false, // Don't show stats in the console
     progress: true
   }
-}
+};
