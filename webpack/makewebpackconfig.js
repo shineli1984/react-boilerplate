@@ -83,6 +83,7 @@ module.exports = function(options) {
   return {
     entry: entry,
     output: { // Compile into js/build.js
+      publicPath: '/',
       path: path.resolve(__dirname, '..', 'build'),
       filename: "js/bundle.js"
     },
@@ -94,10 +95,14 @@ module.exports = function(options) {
           query: query,
         }, {
           test:   /\.css$/, // Transform all .css files required somewhere within an entry point...
-          loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules!postcss-loader') // ...with PostCSS
+          exclude: /global\.css$/,
+          loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&camelCase!postcss-loader') // ...with PostCSS
         }, {
           test: /\.jpe?g$|\.gif$|\.png$/i,
           loader: "url-loader?limit=10000"
+        }, {
+          test:   /global\.css$/, // Transform all .css files required somewhere within an entry point...
+          loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') // ...with PostCSS
         }
       ]
     },
